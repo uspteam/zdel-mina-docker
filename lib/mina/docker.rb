@@ -1,3 +1,8 @@
+def command_with_comment(code)
+  comment code
+  command code
+end
+
 set :docker_compose_file, 'docker-compose.yml'
 set :docker_image, 'xxxxx'
 set :docker_hub, 'xxxxxx'
