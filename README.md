@@ -6,11 +6,7 @@ You can use mina now to deploy docker servers.
 
 Add this line to your application's Gemfile:
 
-    gem 'mina-docker'
-
-Or install it yourself as:
-
-    $ gem install mina-docker
+    gem 'mina-docker', git: "git@github.com:flydrago/mina-docker.git", branch: 'main', require: false
 
 ## Usage
 
