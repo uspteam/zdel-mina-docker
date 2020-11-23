@@ -80,7 +80,6 @@ namespace :docker_compose do
   task :setup do
     run(:remote) do
       command_with_comment %(mkdir -p "#{fetch(:deploy_to)}/log/")
-      command_with_comment %(mkdir -p "#{fetch(:deploy_to)}/tmp/pids/")
       command_with_comment %(mkdir -p "#{fetch(:deploy_to)}/config")
     end
 
