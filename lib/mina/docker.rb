@@ -61,6 +61,15 @@ namespace :docker_compose do
     end
   end
 
+  desc 'docker_compose run with an interactive'
+  task :run_with_it, [:command] do |t, args|
+    set :execution_mode, :exec
+
+    in_path(fetch(:deploy_to)) do
+      command_with_comment %{docker-compose --file #{fetch(:docker_compose_file)} run --rm -e RAILS_ENV=#{fetch(:rails_env)} app #{args.command}}
+    end
+  end
+
   desc 'docker_compose migrate'
   task :migrate do
     comment "Call migrate"
@@ -74,6 +83,13 @@ namespace :docker_compose do
 
     invoke :'docker_compose:run', "bundle exec rake roles_and_permissions:update_menus"
     invoke :'docker_compose:run', "bundle exec rake roles_and_permissions:update_permissions"
+  end
+
+  desc 'docker_compose Starts an interactive console.'
+  task :console do
+    comment "rails console"
+
+    invoke :'docker_compose:run_with_it', "bundle exec rails c"
   end
 
   desc 'docker_compose setup'
