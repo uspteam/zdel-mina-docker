@@ -47,8 +47,8 @@ namespace :docker_compose do
     end
   end
 
-  desc 'docker_compose status'
-  task :status do
+  desc 'docker_compose ps'
+  task :ps do
     in_path(fetch(:deploy_to)) do
       command_with_comment %{docker-compose --file #{fetch(:docker_compose_file)} ps}
     end
