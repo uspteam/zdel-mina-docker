@@ -40,10 +40,18 @@ namespace :docker_compose do
     end
   end
 
+  desc 'docker_compose down'
+  task :down do
+    in_path(fetch(:deploy_to)) do
+      command_with_comment %{docker-compose --file #{fetch(:docker_compose_file)} down}
+    end
+  end
+
   desc 'docker_compose restart'
   task :restart do
     in_path(fetch(:deploy_to)) do
-      command_with_comment %{docker-compose --file #{fetch(:docker_compose_file)} restart}
+      invoke :'docker_compose:down'
+      invoke :'docker_compose:up'
     end
   end
 
