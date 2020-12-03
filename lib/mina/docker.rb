@@ -23,6 +23,11 @@ namespace :docker do
       command_with_comment %{docker push #{fetch(:docker_hub)}#{fetch(:docker_image)}:#{ENV.fetch('IMAGE_VERSION', 'latest')}}
     end
   end
+
+  desc 'docker push image'
+  task :image, [:command] do |t, args|
+    command_with_comment %{docker image #{args.command}}
+  end
 end
 
 namespace :docker_compose do
@@ -116,6 +121,7 @@ namespace :docker_compose do
   task :deploy do
     command_with_comment "export IMAGE_VERSION=#{ENV.fetch('IMAGE_VERSION', 'latest')}"
 
+    invoke :'docker:image', 'prune'
     invoke :'docker_compose:pull'
     invoke :'docker_compose:migrate'
     invoke :'docker_compose:update_menus_and_permissions'
