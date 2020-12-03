@@ -121,7 +121,7 @@ namespace :docker_compose do
   task :deploy do
     command_with_comment "export IMAGE_VERSION=#{ENV.fetch('IMAGE_VERSION', 'latest')}"
 
-    invoke :'docker:image', 'prune'
+    invoke :'docker:image', 'prune -f'
     invoke :'docker_compose:pull'
     invoke :'docker_compose:migrate'
     invoke :'docker_compose:update_menus_and_permissions'
