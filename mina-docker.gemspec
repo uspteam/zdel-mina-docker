@@ -1,8 +1,10 @@
+require './lib/docker.rb'
+
 Gem::Specification.new do |s|
   s.name        = 'mina-docker'
-  s.version     = '0.0.1'
+  s.version     = Mina::Docker::VERSION
   s.date        = '2020-11-22'
-  s.summary     = 'dd docker support for mina.'
+  s.summary     = 'add docker support for mina.'
   s.description = 'add docker support for mina.'
   s.authors     = ['flydragon']
   s.email       = 'flydragon@gmail.com'

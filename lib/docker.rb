@@ -1,5 +1,5 @@
 module Mina
   module Docker
-    VERSION = "0.0.2"
+    VERSION = '0.0.2'
   end
 end
