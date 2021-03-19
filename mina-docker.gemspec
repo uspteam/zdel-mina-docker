@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.description = 'add docker support for mina.'
   s.authors     = ['flydragon']
   s.email       = 'flydragon@gmail.com'
-  s.files       = ['lib/docker.rb']
-  s.homepage    = 'https://rubygems.org/gems/mina-docker'
+  s.files       = `git ls-files`.split("\n")
+  s.homepage    = 'https://github.com/flydrago/mina-docker'
   s.license     = 'MIT'
   s.require_paths = ['lib']
 
