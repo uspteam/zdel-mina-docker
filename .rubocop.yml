@@ -1,0 +1,13 @@
+inherit_from: .rubocop_todo.yml
+
+# AllCops:
+#   DisplayCopNames: false
+Layout:
+  Enabled: true
+Style:
+  Enabled: true
+Naming:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.7.2
