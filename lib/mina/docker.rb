@@ -9,9 +9,9 @@ set :docker_hub, 'xxxxxx'
 
 namespace :docker do
   desc 'docker build image'
-  task :build do
+  task :build, [:command] do |t, args|
     run(:local) do
-      command_with_comment %{docker build -t #{fetch(:docker_image)}:#{ENV.fetch('IMAGE_VERSION', 'latest')} -t #{fetch(:docker_image)}:latest ./}
+      command_with_comment %{docker build -t #{fetch(:docker_image)}:#{ENV.fetch('IMAGE_VERSION', 'latest')} -t #{fetch(:docker_image)}:latest #{args.command} ./}
 
       command_with_comment %{docker tag #{fetch(:docker_image)}:#{ENV.fetch('IMAGE_VERSION', 'latest')} #{fetch(:docker_hub)}#{fetch(:docker_image)}:#{ENV.fetch('IMAGE_VERSION', 'latest')}}
     end
