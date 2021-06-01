@@ -8,7 +8,7 @@ set :docker_image, 'xxxxx'
 set :docker_hub, 'xxxxxx'
 
 namespace :docker do
-  desc 'docker publish image (1. build , 2. tag , 3. push)'
+  desc 'docker publish image to hub (1. build , 2. tag , 3. push)'
   task :publish, [:build_command] do |_t, args|
     invoke :'docker:build', args.build_command
     invoke :'docker:tag'
